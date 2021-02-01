@@ -16,7 +16,9 @@ public class TestBase {
     @BeforeMethod
     public void setUp(){
         driver= WebDriverFactory.getDriver("chrome");
+
         driver.manage().window().maximize();
+
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
         driver.get("http://qa.trycloud.net/index.php/login?clear=1");
         driver.findElement(By.xpath("//input[@id='user']")).sendKeys(ConfigurationReader.getProperty("login1"));
