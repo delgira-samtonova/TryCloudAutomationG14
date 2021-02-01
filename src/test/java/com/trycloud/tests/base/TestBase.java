@@ -16,13 +16,15 @@ public class TestBase {
     @BeforeMethod
     public void setUp(){
         driver= WebDriverFactory.getDriver("chrome");
+
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-        driver.get("http://qa.trycloud.net/index.php/login?clear=1");
+
+        driver.manage().timeouts().implicitlyWait(15,TimeUnit.SECONDS);
+        driver.get(ConfigurationReader.getProperty("environment"));
         driver.findElement(By.xpath("//input[@id='user']")).sendKeys(ConfigurationReader.getProperty("login1"));
-    //    BrowserUtils.sleep(1);
+        BrowserUtils.sleep(1);
         driver.findElement(By.id("password")).sendKeys(ConfigurationReader.getProperty("password"));
-     //   BrowserUtils.sleep(1);
+         BrowserUtils.sleep(1);
         driver.findElement(By.id("submit-form")).click();
 
     }
