@@ -23,7 +23,7 @@ public class US1_TC1_TC2 extends TestBase {
 
     @Test
     public void logInVerification() {
-        String expectedURL = "http://qa.trycloud.net/index.php/apps/files/";
+        String expectedURL = "http://qa2.trycloud.net/index.php/apps/dashboard/";
         String actualURL = Driver.getDriver().getCurrentUrl();
         Assert.assertEquals(actualURL, expectedURL);
     }
