@@ -1,4 +1,4 @@
-package com.trycloud.tests.US1_TC1_TC2;
+package com.trycloud.tests.US1_TC1_TC2_;
 
 import com.github.javafaker.Faker;
 import com.trycloud.tests.base.TestBase;

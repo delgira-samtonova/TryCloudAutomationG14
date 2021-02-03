@@ -1,9 +1,7 @@
-package com.trycloud.tests.US1_TC1_TC2;
+package com.trycloud.tests.US1_TC1_TC2_;
 
 import com.trycloud.tests.base.TestBase;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class TC1 extends TestBase {
