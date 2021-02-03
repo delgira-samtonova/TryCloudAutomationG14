@@ -41,7 +41,7 @@ public class US1_TC1_TC2 extends TestBase {
         BrowserUtils.sleep(1);
         Driver.getDriver().findElement(By.xpath("//input[@id='user']")).sendKeys(ConfigurationReader.getProperty("login1"));
         BrowserUtils.sleep(2);
-        Faker faker = new Faker();
+         Faker faker = new Faker();
         Driver.getDriver().findElement(By.id("password")).sendKeys(faker.internet().password());
         BrowserUtils.sleep(1);
         Driver.getDriver().findElement(By.id("submit-form")).click();
