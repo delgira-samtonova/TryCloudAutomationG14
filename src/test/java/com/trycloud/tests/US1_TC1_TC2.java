@@ -4,6 +4,7 @@ import com.github.javafaker.Faker;
 import com.trycloud.tests.base.TestBase;
 import com.trycloud.utilities.BrowserUtils;
 import com.trycloud.utilities.ConfigurationReader;
+import com.trycloud.utilities.Driver;
 import com.trycloud.utilities.WebDriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -23,29 +24,29 @@ public class US1_TC1_TC2 extends TestBase {
     @Test
     public void logInVerification() {
         String expectedURL = "http://qa.trycloud.net/index.php/apps/files/";
-        String actualURL = driver.getCurrentUrl();
+        String actualURL = Driver.getDriver().getCurrentUrl();
         Assert.assertEquals(actualURL, expectedURL);
     }
     @Test
     public void logOutVerification(){
-        driver.findElement(By.xpath("//div[@id='expand']")).click();
-        driver.findElement(By.xpath("//li[@data-id='logout']")).click();
-        Assert.assertEquals(ConfigurationReader.getProperty("environment"),driver.getCurrentUrl());
+        Driver.getDriver().findElement(By.xpath("//div[@id='expand']")).click();
+        Driver.getDriver().findElement(By.xpath("//li[@data-id='logout']")).click();
+        Assert.assertEquals(ConfigurationReader.getProperty("environment"),Driver.getDriver().getCurrentUrl());
     }
 
     @Test
     public void logInInvalidVerification() {
-        driver.findElement(By.xpath("//div[@id='expand']")).click();
-        driver.findElement(By.xpath("//li[@data-id='logout']")).click();
+        Driver.getDriver().findElement(By.xpath("//div[@id='expand']")).click();
+        Driver.getDriver().findElement(By.xpath("//li[@data-id='logout']")).click();
         BrowserUtils.sleep(1);
-        driver.findElement(By.xpath("//input[@id='user']")).sendKeys(ConfigurationReader.getProperty("login1"));
+        Driver.getDriver().findElement(By.xpath("//input[@id='user']")).sendKeys(ConfigurationReader.getProperty("login1"));
         BrowserUtils.sleep(2);
         Faker faker = new Faker();
-        driver.findElement(By.id("password")).sendKeys(faker.internet().password());
+        Driver.getDriver().findElement(By.id("password")).sendKeys(faker.internet().password());
         BrowserUtils.sleep(1);
-        driver.findElement(By.id("submit-form")).click();
+        Driver.getDriver().findElement(By.id("submit-form")).click();
 
-        WebElement warningMessage = driver.findElement(By.xpath("//p[@class='warning wrongPasswordMsg']"));
+        WebElement warningMessage = Driver.getDriver().findElement(By.xpath("//p[@class='warning wrongPasswordMsg']"));
         boolean messageIsDisplayed = warningMessage.isDisplayed();
         String actualWarningMessageMessage = warningMessage.getText();
         String expectedWarningMessage = "Wrong username or password.";
