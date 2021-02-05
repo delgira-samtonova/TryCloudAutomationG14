@@ -17,7 +17,6 @@ public class US3_TC6_TC7  extends TestBase {
 
 
 
-        Driver.getDriver().manage().timeouts().implicitlyWait(3000, TimeUnit.MILLISECONDS);
         Driver.getDriver().findElement(By.cssSelector("#appmenu > li:nth-child(2) > a")).click();
  /*
  Actions actions= new Actions(driver);
