@@ -14,6 +14,7 @@ public class ConfigurationReader {
         try {
             FileInputStream file = new FileInputStream("configuration.properties");
             properties.load(file);
+            file.close();
         }catch (IOException e) {
             e.printStackTrace();
         }
