@@ -17,7 +17,6 @@ public class US3part2_TC4_TC5_TC6_TC7 extends TestBase {
 
     @Test
     public void removeFileVerification() {
-
     /*
     This part of functionality developed particularly for login2
     However the program designed for any User log in key .
@@ -32,16 +31,16 @@ public class US3part2_TC4_TC5_TC6_TC7 extends TestBase {
 
         Driver.getDriver().findElement(By.id("submit-form")).click();
 */
-
         Driver.getDriver().findElement(By.xpath("(//li[@data-id='files'])[1]")).click();
         BrowserUtils.sleep(2);
         //adding new file, by clicking the menu button
 
-        WebElement addFileButton = Driver.getDriver().findElement(By.xpath("//a[@class='button new']"));
-        addFileButton.click();
-        //upload the file, YOU GOT A MAKE SURE YOY UPLODE YOUR OWN FILE BEFORE THE PROGRAM RUNS all so provide your own path
-        WebElement upplodeFile = Driver.getDriver().findElement(By.id("file_upload_start"));
-        upplodeFile.sendKeys("/Users/liubovtrudova/Desktop/back.jpg");
+            WebElement addFileButton = Driver.getDriver().findElement(By.xpath("//a[@class='button new']"));
+            addFileButton.click();
+            //upload the file, YOU GOT A MAKE SURE YOY UPLODE YOUR OWN FILE BEFORE THE PROGRAM RUNS all so provide your own path
+            WebElement upplodeFile = Driver.getDriver().findElement(By.id("file_upload_start"));
+            upplodeFile.sendKeys("/Users/liubovtrudova/Desktop/back.jpg");
+
         //handling uprearing form
         if (Driver.getDriver().findElement(By.xpath("//button[@class='cancel']")).isDisplayed()) {
             Driver.getDriver().findElement(By.xpath("//button[@class='cancel']")).click();
@@ -69,6 +68,5 @@ public class US3part2_TC4_TC5_TC6_TC7 extends TestBase {
         //3. Click “Remove from Favorites” option
         //4. Verify that the file is removed from Favorites sub-module’s table.
         //(Pre-condition: there should be at least 1 file is added to favorites table)
-
     }
 }
