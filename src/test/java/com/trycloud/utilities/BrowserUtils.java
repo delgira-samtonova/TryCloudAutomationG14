@@ -17,18 +17,18 @@ public class BrowserUtils {
     }
 
 
-//
-//    public static void explicitWaitVisibility(WebDriver driver, int sec, String locator){
-//
-//        WebDriverWait webDriverWait = new WebDriverWait(driver,sec);
-//        webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(locator)));
-//
-//    }
 
-//    public static void explicitWaitClick(WebDriver driver,int sec,String locator){
-//
-//        WebDriverWait webDriverWait = new WebDriverWait(driver,sec);
-//        webDriverWait.until(ExpectedConditions.elementToBeClickable(By.xpath(locator)));
-//
-//    }
+    public static void explicitWaitVisibility(WebDriver driver, int sec, String locator){
+
+        WebDriverWait webDriverWait = new WebDriverWait(driver,sec);
+        webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(locator)));
+
+    }
+
+    public static void explicitWaitClick(WebDriver driver,int sec,String locator){
+
+        WebDriverWait webDriverWait = new WebDriverWait(driver,sec);
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(By.xpath(locator)));
+
+    }
 }
