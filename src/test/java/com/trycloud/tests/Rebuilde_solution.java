@@ -1,19 +1,17 @@
 package com.trycloud.tests;
 
-import com.github.javafaker.Faker;
 import com.trycloud.tests.base.TestBase;
 import com.trycloud.utilities.BrowserUtils;
-import com.trycloud.utilities.ConfigurationReader;
 import com.trycloud.utilities.Driver;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.util.List;
 
-public class US3part2_TC4_TC5_TC6_TC7 extends TestBase {
+public class Rebuilde_solution extends TestBase {
 
     @Test
     public void TC5() {
