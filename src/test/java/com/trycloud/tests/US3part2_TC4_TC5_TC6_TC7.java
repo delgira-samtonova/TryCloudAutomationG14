@@ -16,35 +16,41 @@ import java.util.List;
 public class US3part2_TC4_TC5_TC6_TC7 extends TestBase {
 
     @Test
-    public void removeFileVerification() {
-    /*
-    This part of functionality developed particularly for login2
-    However the program designed for any User log in key .
-
-        Driver.getDriver().findElement(By.xpath("//div[@id='expand']")).click();
-        Driver.getDriver().findElement(By.xpath("//li[@data-id='logout']")).click();
-        BrowserUtils.sleep(1);
-        Driver.getDriver().findElement(By.xpath("//input[@id='user']")).sendKeys(ConfigurationReader.getProperty("login2"));
-        BrowserUtils.sleep(2);
-
-        Driver.getDriver().findElement(By.id("password")).sendKeys(ConfigurationReader.getProperty("password"));
-
-        Driver.getDriver().findElement(By.id("submit-form")).click();
-*/
+    public void TC5() {
+        //Test case #5 - verify users can upload a file directly to the homepage (File-Uploading)
+        //1. Login as a user
+        //2. Click the “+” icon on top
+        //3. Click “upload file”
+        //4. Upload a file
+        //5. Verify the file is displayed on the page
+        //Go to the files
         Driver.getDriver().findElement(By.xpath("(//li[@data-id='files'])[1]")).click();
         BrowserUtils.sleep(2);
         //adding new file, by clicking the menu button
-
-            WebElement addFileButton = Driver.getDriver().findElement(By.xpath("//a[@class='button new']"));
-            addFileButton.click();
-            //upload the file, YOU GOT A MAKE SURE YOY UPLODE YOUR OWN FILE BEFORE THE PROGRAM RUNS all so provide your own path
-            WebElement upplodeFile = Driver.getDriver().findElement(By.id("file_upload_start"));
-            upplodeFile.sendKeys("/Users/liubovtrudova/Desktop/back.jpg");
-
-        //handling uprearing form
-        if (Driver.getDriver().findElement(By.xpath("//button[@class='cancel']")).isDisplayed()) {
-            Driver.getDriver().findElement(By.xpath("//button[@class='cancel']")).click();
+        //verification of the number of files displayed before uploading the new file.
+        int howMayFilesBeforeAdding = Driver.getDriver().findElements(By.xpath("//tbody[@id='fileList']/tr")).size();
+        //adding new file, by clicking the menu button
+        WebElement addFileButton = Driver.getDriver().findElement(By.xpath("//a[@class='button new']"));
+        addFileButton.click();
+        //upload the file, YOU GOT A MAKE SURE YOY provide your own path
+        WebElement upplodeFile = Driver.getDriver().findElement(By.id("file_upload_start"));
+        upplodeFile.sendKeys("/Users/liubovtrudova/Desktop/test.png");
+        //number of files displayed after uploding the new one
+        int howManyFilesAafterUpploadigOne = Driver.getDriver().findElements(By.xpath("//tbody[@id='fileList']/tr")).size();
+        if (howManyFilesAafterUpploadigOne - howMayFilesBeforeAdding == 1) {
+            Assert.assertTrue(true);
         }
+        //delete functionality in order don't change file path any time the case runs
+        BrowserUtils.sleep(1);
+        Driver.getDriver().findElement(By.xpath("(//a[@class='action action-menu permanent'])[4]")).click();
+        BrowserUtils.sleep(1);
+        Driver.getDriver().findElement(By.xpath("//a[@class='menuitem action action-delete permanent']")).click();
+    }
+
+    @Test
+    public void TC4() {
+        Driver.getDriver().findElement(By.xpath("(//li[@data-id='files'])[1]")).click();
+        BrowserUtils.sleep(2);
         ///adding to the favorites the file or folder
         Driver.getDriver().findElement(By.xpath("(//a[@class='action action-menu permanent'])[3]")).click();
         WebElement addFavorets = Driver.getDriver().findElement(By.xpath("//a[@class='menuitem action action-favorite permanent']"));
