@@ -32,6 +32,8 @@ public class US1_TC1_TC2 extends TestBase {
         Driver.getDriver().findElement(By.xpath("//div[@id='expand']")).click();
         Driver.getDriver().findElement(By.xpath("//li[@data-id='logout']")).click();
         Assert.assertEquals(ConfigurationReader.getProperty("environment"),Driver.getDriver().getCurrentUrl());
+
+
     }
 
     @Test

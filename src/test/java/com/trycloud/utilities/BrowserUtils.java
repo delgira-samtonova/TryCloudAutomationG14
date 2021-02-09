@@ -18,6 +18,8 @@ public class BrowserUtils {
 
 
 
+/*
+
     public static void explicitWaitVisibility(WebDriver driver, int sec, String locator){
 
         WebDriverWait webDriverWait = new WebDriverWait(driver,sec);
@@ -25,10 +27,18 @@ public class BrowserUtils {
 
     }
 
+
+
     public static void explicitWaitClick(WebDriver driver,int sec,String locator){
 
         WebDriverWait webDriverWait = new WebDriverWait(driver,sec);
         webDriverWait.until(ExpectedConditions.elementToBeClickable(By.xpath(locator)));
 
     }
+
+
+ */
+
+
+
 }
