@@ -1,6 +1,8 @@
 package com.trycloud.tests;
 
 import com.github.javafaker.Faker;
+import com.trycloud.pages.DashBordPage;
+import com.trycloud.pages.LogInPage;
 import com.trycloud.tests.base.TestBase;
 import com.trycloud.utilities.BrowserUtils;
 import com.trycloud.utilities.ConfigurationReader;
@@ -15,12 +17,7 @@ import org.testng.annotations.Test;
 import java.util.concurrent.TimeUnit;
 
 public class US1_TC1_TC2 extends TestBase {
-    @BeforeMethod
-    @Override
-    public void setUp() {
-        super.setUp();
-    }
-
+    public DashBordPage dashBordPage= new DashBordPage();
     @Test
     public void logInVerification() {
         String expectedURL = "http://qa2.trycloud.net/index.php/apps/dashboard/";
@@ -29,27 +26,27 @@ public class US1_TC1_TC2 extends TestBase {
     }
     @Test
     public void logOutVerification(){
-        Driver.getDriver().findElement(By.xpath("//div[@id='expand']")).click();
-        Driver.getDriver().findElement(By.xpath("//li[@data-id='logout']")).click();
+
+        dashBordPage.userSetings.click();
+        dashBordPage.logOut.click();
         Assert.assertEquals(ConfigurationReader.getProperty("environment"),Driver.getDriver().getCurrentUrl());
     }
 
     @Test
     public void logInInvalidVerification() {
-        Driver.getDriver().findElement(By.xpath("//div[@id='expand']")).click();
-        Driver.getDriver().findElement(By.xpath("//li[@data-id='logout']")).click();
-        BrowserUtils.sleep(1);
-        Driver.getDriver().findElement(By.xpath("//input[@id='user']")).sendKeys(ConfigurationReader.getProperty("login1"));
-        BrowserUtils.sleep(2);
-         Faker faker = new Faker();
-        Driver.getDriver().findElement(By.id("password")).sendKeys(faker.internet().password());
-        BrowserUtils.sleep(1);
-        Driver.getDriver().findElement(By.id("submit-form")).click();
+        dashBordPage.userSetings.click();
+        dashBordPage.logOut.click();
+        //negative case
+        logInPage.loginInput.sendKeys(ConfigurationReader.getProperty("login1"));
+        Faker faker = new Faker();
+        logInPage.passwordInput.sendKeys(faker.internet().password());
 
-        WebElement warningMessage = Driver.getDriver().findElement(By.xpath("//p[@class='warning wrongPasswordMsg']"));
-        boolean messageIsDisplayed = warningMessage.isDisplayed();
-        String actualWarningMessageMessage = warningMessage.getText();
+        logInPage.logInButton.click();
+
+        boolean messageIsDisplayed = logInPage.warningMessage.isDisplayed();
+        String actualWarningMessageMessage = logInPage.warningMessage.getText();
         String expectedWarningMessage = "Wrong username or password.";
+
         Assert.assertTrue(messageIsDisplayed);
         Assert.assertEquals(actualWarningMessageMessage, expectedWarningMessage);
     }
