@@ -30,6 +30,8 @@ public class US1_TC1_TC2 extends TestBase {
         dashBordPage.userSetings.click();
         dashBordPage.logOut.click();
         Assert.assertEquals(ConfigurationReader.getProperty("environment"),Driver.getDriver().getCurrentUrl());
+
+
     }
 
     @Test
