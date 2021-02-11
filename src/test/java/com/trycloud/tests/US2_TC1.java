@@ -39,7 +39,7 @@ public class US2_TC1 extends TestBase {
         WebElement contacts = Driver.getDriver().findElement(By.xpath("//a[@href='/index.php/apps/contacts/']"));
         Assert.assertTrue(contacts.isDisplayed());
 
-        WebElement calendar = Driver.getDriver().findElement(By.tagName("h3"));
+        WebElement calendar = Driver.getDriver().findElement(By.xpath("//a[@href = '/index.php/apps/calendar/']"));
         Assert.assertTrue(calendar.isDisplayed());
 
        //? WebElement note = Driver.getDriver().findElement();
