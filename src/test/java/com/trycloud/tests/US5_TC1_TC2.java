@@ -11,7 +11,9 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.awt.*;
 import java.awt.image.Kernel;
+import java.util.List;
 
 public class US5_TC1_TC2 extends TestBase {
 
@@ -34,11 +36,11 @@ public class US5_TC1_TC2 extends TestBase {
         Driver.getDriver().findElement(By.xpath("//a[@aria-label='Contacts']")).click();
         //Locating the New contact button
         Driver.getDriver().findElement(By.id("new-contact-button")).click();
-        String name = "Tamerlan";
+        String name = faker.name().name();
         //Locating name space
         WebElement nameSpace = Driver.getDriver().findElement(By.xpath("//input[@id='contact-fullname']"));
         nameSpace.sendKeys(Keys.COMMAND+"A");
-        nameSpace.sendKeys("Tamerlan");
+        nameSpace.sendKeys(name);
         //Locating Phone space
         Driver.getDriver().findElement(By.xpath("//input[@inputmode='tel']")).sendKeys(faker.phoneNumber().cellPhone());
         //locating email space
@@ -47,7 +49,37 @@ public class US5_TC1_TC2 extends TestBase {
         Driver.getDriver().findElement(By.xpath("//input[@placeholder='Company']")).sendKeys("Cybertek");
         //locating Title space
         Driver.getDriver().findElement(By.xpath("//input[@placeholder='Title']")).sendKeys("SDET");
-        
+        //locating post office box
+        Driver.getDriver().findElement(By.xpath("(//input[@class='property__value'])[1]")).sendKeys("12345-123");
+        //locating address
+        Driver.getDriver().findElement(By.xpath("(//input[@class='property__value'])[2]")).sendKeys(faker.address().cityName());
+        //locating extended address
+        Driver.getDriver().findElement(By.xpath("(//input[@class='property__value'])[3]")).sendKeys(faker.address().fullAddress());
+        //locating Postcode
+        Driver.getDriver().findElement(By.xpath("(//input[@class='property__value'])[4]")).sendKeys(faker.address().zipCode());
+        //locating City
+        Driver.getDriver().findElement(By.xpath("(//input[@class='property__value'])[5]")).sendKeys(faker.address().city());
+        //locating State or province
+        Driver.getDriver().findElement(By.xpath("(//input[@class='property__value'])[6]")).sendKeys(faker.address().state());
+        //locating country
+        Driver.getDriver().findElement(By.xpath("(//input[@class='property__value'])[7]")).sendKeys(faker.address().country());
+
+
+        List<WebElement> list = Driver.getDriver().findElements(By.xpath("//main//div"));
+
+        boolean nameDisplayed = false;
+
+        for (WebElement each : list) {
+            if (each.getText().contains(name)) {
+                nameDisplayed = true;
+            }
+        }
+
+            Assert.assertTrue(nameDisplayed, "Expected name is Displayed on the list of contacts");
+
+            BrowserUtils.sleep(5);
+            Driver.getDriver().close();
+
 
 
 
