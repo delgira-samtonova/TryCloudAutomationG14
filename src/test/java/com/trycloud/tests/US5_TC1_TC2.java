@@ -75,7 +75,6 @@ public class US5_TC1_TC2 extends TestBase {
             }
         }
 
-
             Assert.assertTrue(nameDisplayed, "Expected name is Displayed on the list of contacts");
 
             BrowserUtils.sleep(5);
