@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 public class US2_TC1 extends TestBase {
 
     @Test
-    public void fileTitleVerification(){
+    public void accessMainModules(){
 
         /*
         US2: As a user, I should be able to access all the main modules of the app.
@@ -21,6 +21,7 @@ public class US2_TC1 extends TestBase {
         ( Expected module name: Galleries
         Actual module name : Photos )
          */
+
 
 
 

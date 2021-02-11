@@ -16,12 +16,14 @@ public class US3_TC1 extends TestBase {
      */
 
     @Test
-    public void verifyFilesTitle(){
+    public void verifyFilesPageTitle(){
 
         Driver.getDriver().findElement(By.xpath("//a[@aria-label='Files']")).click();
 
         String actualFilesTitle = Driver.getDriver().getTitle();
-        String expectedFilesTitle ="Files - Trycloud";
+
+        String expectedFilesTitle = "Files - Trycloud";
+
         Assert.assertTrue(actualFilesTitle.equals(expectedFilesTitle));
 
         Driver.closeDriver();
