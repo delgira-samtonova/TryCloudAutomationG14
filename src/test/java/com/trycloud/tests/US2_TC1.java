@@ -22,11 +22,30 @@ public class US2_TC1 extends TestBase {
         Actual module name : Photos )
          */
 
+        WebElement files = Driver.getDriver().findElement(By.xpath("//a[@aria-label='Files']"));
+        Assert.assertTrue(files.isDisplayed());
 
+        WebElement photos = Driver.getDriver().findElement(By.xpath("//a[@aria-label='Photos']"));
+        String actualPhotos = "Photos";
+        String expectedGalleries = "Galleries";
+        Assert.assertNotEquals(actualPhotos,expectedGalleries, "Expected result should be galleries but actual result is photos");
 
+        WebElement activity = Driver.getDriver().findElement(By.xpath("//a[@href='/index.php/apps/activity/']"));
+        Assert.assertTrue(activity.isDisplayed());
 
+        WebElement talk = Driver.getDriver().findElement(By.xpath("//a[@href='http://qa2.trycloud.net/index.php/apps/spreed/']"));
+        Assert.assertTrue(talk.isDisplayed());
 
+        WebElement contacts = Driver.getDriver().findElement(By.xpath("//a[@href='/index.php/apps/contacts/']"));
+        Assert.assertTrue(contacts.isDisplayed());
 
+        WebElement calendar = Driver.getDriver().findElement(By.tagName("h3"));
+        Assert.assertTrue(calendar.isDisplayed());
+
+       //? WebElement note = Driver.getDriver().findElement();
+       //? Assert.assertTrue(note.isDisplayed());
+
+        Driver.closeDriver();
 
 
     }
